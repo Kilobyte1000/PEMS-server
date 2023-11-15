@@ -1,0 +1,308 @@
+html {
+    height: 100%;
+    min-width: 753px;
+}
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fdfdfc
+}
+
+@supports not (--css: variables) {
+    body > *{
+        display: none;
+    }
+    body:before {
+        font-size: 4em;
+        justify-content: center;
+        align-content: center;
+        content: "SORRY! BROWSER NOT SUPPORTED. ONLY CHROME VERSIONS 49 AND ABOVE ARE SUPPORTED";
+        text-align: center;
+
+    }
+}
+
+/* set style for each css variable */
+body.kabir {
+    --base-color: 119,221,119;
+    --border-color: #249225;
+    --highlight-color: 81,213,81;
+    --radio-color: #3D933D;
+}
+body.raman {
+    --base-color:125,99,218;
+    --border-color:#802db9;
+    --highlight-color:194,133,222;
+    --radio-color:#Aa32c3
+}
+body.tagore {
+    --base-color: 240, 117, 117;
+    --border-color: #f44336;
+    --highlight-color: 248, 122, 122;
+    --radio-color: #D13438
+}
+body.tilak {
+    --base-color: 3, 169, 244;
+    --border-color: #1976d2;
+    --highlight-color: 3, 155, 229;
+    --radio-color: #1565C0;
+}
+body.vivekanand {
+    --base-color: 240, 153, 19;
+    --border-color: #bb7d1e;
+    --highlight-color: 239, 175, 93;
+    --radio-color: #E18627;
+}
+/* yellow house also needs text shadow on radio buttons */
+body.vashishth {
+    --base-color: 222, 227, 54;
+    --border-color: #929443;
+    --highlight-color: 230, 220, 58;
+    --radio-color: #f7b400;
+}
+body.vashishth input:checked + label {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.32);
+}
+/* color declaration end */
+
+.content {
+    flex-grow: 1;
+}
+header, footer {
+    width: 100%;
+
+    background-color: #101010;
+    color: white;
+
+    text-transform: uppercase;
+    font-size: 300%;
+    font-weight: bold;
+    font-family: "Trebuchet MS", "Segoe UI", "Tahoma", serif;
+    text-align: center;
+}
+header {
+    height: 110px;
+}
+footer {
+    flex-shrink: 0;
+}
+header p {
+    display: inline-block;
+    transform: translateY(-50%);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.house {
+    border: var(--border-color) solid;
+    border-width: 0.3em 0 0.3em 0;
+    background: linear-gradient(to right, rgba(var(--base-color),0.8), rgba(var(--base-color),0.43), rgba(var(--base-color),0.8) );
+}
+
+.house span {
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+main {
+    display: flex;
+}
+
+nav {
+    width: 16.5%;
+    text-align: right;
+    padding-top: 3.8%;
+    border-right: 1.5px solid grey;
+    background: #f1f1f1;
+}
+
+nav button {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+
+    font-size: 1.5em;
+    font-weight: bold;
+    border: none;
+
+    background: inherit;
+
+    margin-bottom: 6%;
+    transition: 0.3s all;
+}
+
+nav button:hover {
+    background-color: rgb(223,223,223);
+}
+
+nav button:focus {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    background-color: rgb(223,223,223);
+    outline-color: var(--border-color);
+}
+
+nav .active {
+    background-image: linear-gradient(to right, rgb(var(--highlight-color)), rgba(var(--highlight-color),0.2) );
+    border-right: 3px solid var(--border-color);
+}
+
+form {
+    flex-grow: 1;
+    font-size: 1.6em;
+    padding-bottom: 1em;
+}
+
+form > section {
+    display: none;
+    text-align: center;
+}
+
+.visible {
+    display: block !important;
+}
+
+form > section > div {
+    width: 50%;
+    display: inline-block;
+    vertical-align: text-top;
+    margin-left: -1%;
+    margin-bottom: 1.1em;
+}
+
+form h3 {
+    text-decoration: underline;
+}
+
+.vote-area {
+    display: inline-block;
+    text-align: left;
+}
+
+.vote-area div {
+    display: inline-block;
+    max-width: 25vw;
+    word-wrap: break-word;
+}
+
+aside {
+    width: 100%;
+    min-height: 24vh;
+
+    border: solid gray;
+
+    border-width: 1.5px 0;
+
+    background: #f1f1f1;
+}
+
+thead {
+    text-decoration: underline;
+}
+table {
+    margin: 0 auto;
+    height: 100%;
+    font-size: 1.5em;
+}
+tbody th {
+    text-align: end;
+}
+td,th {
+    padding: .5em 1.2em .5em 1.2em;
+    min-width: 20%;
+}
+/* Sensitive Radio Buttons */
+input {
+    position: fixed;
+    opacity: 0;
+}
+
+label {
+    position: relative;
+    margin-right: 1em;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+    display: inline-block;
+    padding: 4% 1em 4% 0.9em;
+}
+
+label:before {
+    box-sizing: border-box;
+    content: " ";
+    position: absolute;
+    top: calc(50% - 0.25em);
+    left: 0;
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    border: 1.2px solid black;
+    background-color: var(--radio-color);
+    border-radius: .25em;
+    z-index: -1;
+}
+
+input + label::before {
+    border-radius: 1em;
+}
+
+input:checked + label:before {
+    top: -5%;
+    width: 100%;
+    height: 115%;
+    background: var(--radio-color);
+}
+
+input:checked + label {
+    padding-left: 1em;
+    color: white;
+    border-style: hidden;
+    border-width: 0;
+    background-color: unset;
+    outline: none !important;
+}
+
+label, label:before {
+    transition: all .25s;
+}
+
+input:focus + label, label:hover {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+}
+
+input:focus + label {
+    outline: solid var(--border-color) 1px;
+}
+
+.button {
+    color: white;
+    background: hsl(152, 77%, 32%);
+
+    border: none;
+
+    font-size: 0.8em;
+    display: none;
+
+    margin: auto;
+    padding: 0.7em 1.4em;
+    border-radius: 0.2em;
+    transition: all 300ms ease;
+    box-shadow: 1px 7px 9px 3px hsla(152, 84%, 20%, 0.42);
+}
+
+.button:hover {
+    background: #0d824b;
+}
+
+.button:active {
+    outline: none;
+    box-shadow: 1px 7px 9px -6px hsla(152, 84%, 20%, 0.42);
+    transform: translateY(6%);
+}
